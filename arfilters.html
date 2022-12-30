@@ -8,9 +8,22 @@
 </head>
 <body style='margin : 0px; overflow: hidden;'>
   <a-scene embedded arjs>
-    <!-- create your content here. just a box for now -->
-    <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>
-    <!-- define a camera which will move according to the marker position -->
+    <a-assets>
+      <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
+      <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
+    </a-assets>
+    <a-entity geometry="primitive: box" material="color: red" position="0 0.5 -10"></a-entity>
+    <a-entity geometry="primitive: box" material="color: orange" position="-2 0.5 -8"></a-entity>
+    <a-entity geometry="primitive: box" material="color: yellow" position="2 0.5 -8"></a-entity>
+    <a-entity geometry="primitive: box" material="color: green" position="-4 0.5 -6"></a-entity>
+    <a-entity geometry="primitive: box" material="color: blue" position="4 0.5 -6"></a-entity>
+    <a-entity id="sky" geometry="primitive: sphere; thetaLength: 90; radius: 30" material="side: back; height: 2048; width: 2048; src: #skyTexture; shader: flat"></a-entity>
+
+    <a-entity light="type: ambient; color: #222"></a-entity>
+    <a-entity light="type: directional; color: #111" position="-1 1 0"></a-entity>
+    <a-entity id="ground" geometry="primitive: plane; height: 100; width: 100" material="src: #groundTexture" rotation="-90 0 0"></a-entity>
+
+    <a-entity id="text" text="value: Show us the light!; color: #BBB" position="2.5 2 -8" scale="8 8 8"></a-entity>
     <a-marker-camera preset='hiro'></a-marker-camera>
   </a-scene>
 </body>
